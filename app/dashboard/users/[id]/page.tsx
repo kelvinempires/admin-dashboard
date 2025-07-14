@@ -1,7 +1,7 @@
 // app/(dashboard)/users/[id]/page.tsx
 import { Suspense } from "react";
-import UserDetailPageClient from "@/components/UserDetailPageClient";
-import UserDetailSkeleton from "@/components/UserDetailSkeleton";
+import UserDetailPageClient from "@/components/UserInfo/UserDetailPageClient";
+import UserDetailSkeleton from "@/components/UserInfo/UserDetailSkeleton";
 
 export default async function UserDetailPage({
   params,
