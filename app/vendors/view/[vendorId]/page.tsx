@@ -13,25 +13,24 @@ export default function VendorPage({
   if (!vendor) return notFound();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-white">
       <div className="flex items-center text-sm text-gray-500 mb-4">
-        <Link href="/vendors" className="hover:underline">
+        <Link href="/vendors" className="hover:underline hover:text-gray-800 ">
           Vendors
         </Link>
         <span className="mx-2">/</span>
         <Link
           href={`/vendors/categories/${vendor.category.toLowerCase()}`}
-          className="hover:underline"
+          className="hover:underline hover:text-gray-800"
         >
           {vendor.category}
         </Link>
         <span className="mx-2">/</span>
-        <span>{vendor.name}</span>
+        <span className="font-semibold text-gray-800">{vendor.name}</span>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <h1 className="text-3xl font-bold mb-6">{vendor.name}</h1>
           <ImageGallery images={vendor.images} />
 
           <div className="mt-8">

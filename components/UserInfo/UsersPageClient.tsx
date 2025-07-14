@@ -186,7 +186,7 @@ export default function UsersPageClient() {
                 <td className="px-4 py-3 text-sm">
                   <div className="flex items-center gap-3">
                     <Link
-                      href={`/admin/users/${user.id}`}
+                      href={`/dashboard/users/${user.id}`}
                       className="mr-2 text-xs text-blue-600 hover:underline"
                     >
                       View

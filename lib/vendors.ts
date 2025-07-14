@@ -93,7 +93,7 @@ export const vendors: Vendor[] = [
   {
     id: "5",
     name: "Flora & Fern",
-    category: "Decor",
+    category: "EventDecor",
     location: "Chicago",
     verified: true,
     price: "From $150",
@@ -138,7 +138,7 @@ export const vendors: Vendor[] = [
   {
     id: "7",
     name: "Bella Bride Styling",
-    category: "Fashion",
+    category: "Logistics",
     location: "Los Angeles",
     verified: true,
     price: "From $300",
@@ -161,7 +161,7 @@ export const vendors: Vendor[] = [
   {
     id: "8",
     name: "Party Pal Rentals",
-    category: "Rentals",
+    category: "Logistics",
     location: "New Jersey",
     verified: true,
     price: "From $75",
@@ -187,7 +187,7 @@ export const vendors: Vendor[] = [
   {
     id: "9",
     name: "Golden Hour Films",
-    category: "Videography",
+    category: "Photography",
     location: "Atlanta",
     verified: true,
     price: "From $350",
@@ -209,7 +209,7 @@ export const vendors: Vendor[] = [
   {
     id: "10",
     name: "Sparkle Cleaning Crew",
-    category: "Cleaning",
+    category: "AudioVisual",
     location: "Dallas",
     verified: false,
     price: "From $120",
@@ -254,7 +254,7 @@ export const vendors: Vendor[] = [
   {
     id: "12",
     name: "Moments By Mara",
-    category: "Photography",
+    category: "Catering",
     location: "San Diego",
     verified: true,
     price: "From $180",
@@ -273,6 +273,69 @@ export const vendors: Vendor[] = [
     businessNumber: "BN: 66778899",
     storeLocation: "Ocean Avenue, San Diego",
     verifiedDate: "11/18/2023",
+  },
+
+  {
+    id: "14",
+    name: "Golden Fork Catering",
+    category: "Catering",
+    location: "Brooklyn",
+    verified: true,
+    price: "From $300",
+    rating: 4.75,
+    reviewCount: 48,
+    description:
+      "Exquisite menus for weddings, corporate functions, and luxury events. Our chefs bring global flavors to your plate.",
+    images: [
+      "/images/catering-1.jpg",
+      "/images/catering-2.jpg",
+      "/images/catering-3.jpg",
+    ],
+    services: ["Buffet setups", "Cocktail service", "Custom menus"],
+    companyName: "Golden Fork Co.",
+    businessNumber: "BN: 99887766",
+    storeLocation: "45 Savory Lane, Brooklyn",
+    verifiedDate: "09/04/2023",
+  },
+  {
+    id: "15",
+    name: "DJ Soundwave",
+    category: "Catering",
+    location: "Manhattan",
+    verified: true,
+    price: "From $600",
+    rating: 4.9,
+    reviewCount: 62,
+    description:
+      "Electrifying DJ services with curated playlists, top-tier equipment, and vibes that keep guests dancing all night.",
+    images: ["/images/dj-1.jpg", "/images/dj-2.jpg"],
+    services: ["Weddings", "Corporate parties", "Birthday bashes"],
+    companyName: "Soundwave Entertainment",
+    businessNumber: "BN: 11223344",
+    storeLocation: "Central Beats Studio, Manhattan",
+    verifiedDate: "02/12/2024",
+  },
+  {
+    id: "16",
+    name: "Flora Luxe Designs",
+    category: "Catering",
+    location: "Bronx",
+    verified: true,
+    price: "From $250",
+    rating: 4.65,
+    reviewCount: 37,
+    description:
+      "Artfully crafted floral arrangements and décor packages for events of all styles — rustic, modern, romantic, and more.",
+    images: [
+      "/images/decor-1.jpg",
+      "/images/decor-2.jpg",
+      "/images/decor-3.jpg",
+    ],
+    services: ["Floral design", "Venue styling", "Custom themes"],
+    companyName: "Flora Luxe Co.",
+    businessNumber: "BN: 44556677",
+    storeLocation: "Bloom Alley, Bronx",
+    verifiedDate: "05/22/2023",
   },
 ];
 
