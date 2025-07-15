@@ -6,6 +6,7 @@ export interface Vendor {
   location: string;
   verified: boolean;
   price: string;
+  reviews: Review[];
   rating: number;
   reviewCount: number;
   description: string;
@@ -15,14 +16,20 @@ export interface Vendor {
   businessNumber: string;
   storeLocation: string;
   verifiedDate: string;
+  storeAddress: string;
 }
 
 export interface Review {
   id: string;
-  author: string;
+  userName: string;
+  userAvatar: string;
   content: string;
   date: string;
   rating: number;
+  likes: number;
+  comment: string;
+  isLiked: boolean;
+  currentLikes: number;
 }
 
 export interface Booking {
