@@ -6,6 +6,7 @@ import { AlertTriangle, CheckCircle, ChevronLeft } from "lucide-react";
 import { getVendorById } from "@/lib/vendors";
 import { CreditCard } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function BookNowPage({
   params,
@@ -13,6 +14,18 @@ export default function BookNowPage({
   params: { vendorId: string };
 }) {
   // Sample events data - in a real app this would come from props or state
+    const router = useRouter();
+     const handlePayment = () => {
+       // Here we would typically:
+       // 1. Validate form inputs
+       // 2. Process payment (via API call)
+       // 3. Then navigate on success
+
+       // For now, i will just navigate directly
+       if (vendor) {
+         router.push(`/vendors/view/${vendor.id}/booking-details`);
+       }
+     };
   const events = [
     {
       id: "1",
@@ -78,7 +91,8 @@ export default function BookNowPage({
         <span className="font-semibold text-gray-800">Book now</span>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-8">
+        {" "}
         {/* Left Column - Booking Form (2/3 width) */}
         <div className="lg:col-span-2">
           <div className="bg-white p-6">
@@ -330,7 +344,10 @@ export default function BookNowPage({
               </div> */}
             </div>
 
-            <button className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group">
+            <button
+              onClick={handlePayment}
+              className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group"
+            >
               <span className="relative z-10 bg-clip-text text-sm font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
                 Pay ${vendor.pricePerDay * bookingDetails.days}
               </span>
@@ -338,7 +355,6 @@ export default function BookNowPage({
             </button>
           </div>
         </div>
-
         {/* Right Column - Vendor Summary (1/3 width) */}
         <div className="lg:col-span-1">
           <div className="bg-white p-6">
