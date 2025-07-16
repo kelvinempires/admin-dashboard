@@ -105,14 +105,14 @@ export default function VendorPage({
                     {vendor.rating.toFixed(2)}
                   </span>
                 </span>
-                <span className="text-gray-500 ml-2 text-xs">
+                <span className="text-gray-500 ml-2 text-sm">
                   ({vendor.reviewCount} reviews)
                 </span>
               </div>
 
               {/* Message Form */}
               <div className="mb-4 bg-[#f9f9f9] p-4 rounded-lg">
-                <h3 className="text-gray-600 mb-2 text-xs font-semibold">
+                <h3 className="text-gray-600 mb-2 text-sm font-semibold">
                   Send vendor a message
                 </h3>
                 <div className="relative flex items-center">
@@ -132,21 +132,19 @@ export default function VendorPage({
                 {/* Book Now Button */}
                 <Link
                   href={`/vendors/view/${vendor.id}/book-now`}
-                  className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-transparent hover:border-[#6946e2] group"
+                  className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group"
                 >
-                  <span className="relative z-10 bg-clip-text text-xs font-semibold text-transparent bg-gradient-to-b from-white to-white/90 group-hover:from-white group-hover:to-white/90">
+                  <span className="relative z-10 bg-clip-text text-sm font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
                     Book now
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-b from-[#b868fa] to-[#6946e2] opacity-100 group-hover:opacity-0 transition-opacity duration-300 rounded-full"></span>
-                  <span className="absolute inset-0 bg-gradient-to-b from-[#6946e2] to-[#b868fa] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
+                  <span className="absolute inset-0 bg-gradient-to-b from-[#b868fa] to-[#6946e2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
                 </Link>
 
                 {/* Make Offer Button */}
                 <Link
                   href={`/vendors/view/${vendor.id}/make-offer`}
-                  className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group"
-                >
-                  <span className="relative z-10 bg-clip-text text-xs font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
+                  className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group">
+                  <span className="relative z-10 bg-clip-text text-sm font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
                     Make an offer
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-b from-[#b868fa] to-[#6946e2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
@@ -154,7 +152,7 @@ export default function VendorPage({
 
                 {/* Message Button */}
                 <button className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group">
-                  <span className="relative z-10 bg-clip-text text-xs font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
+                  <span className="relative z-10 bg-clip-text text-sm font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
                     Message
                   </span>
                   <span className="absolute inset-0 bg-gradient-to-b from-[#b868fa] to-[#6946e2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
@@ -165,11 +163,11 @@ export default function VendorPage({
                 <h2 className="text-gray-700 font-semibold mb-2 border-y-[1px] border-gray-200 pb-1 pt-3">
                   Description
                 </h2>
-                <p className="text-gray-700 text-sm">{vendor.description}</p>
+                <p className="text-gray-800 text-sm">{vendor.description}</p>
               </div>
 
               <div className="mt-2">
-                <h2 className="text-gray-700 font-semibold mb-2 pb-1 pt-3">
+                <h2 className="text-gray-800 font-semibold mb-2 pb-1 pt-3">
                   Reviews ({vendor.reviewCount})
                 </h2>
                 {reviews.length > 0 ? (
@@ -187,12 +185,12 @@ export default function VendorPage({
                               className="w-7 h-7 rounded-full object-cover"
                             />
                             <div className="flex flex-col">
-                              <div className="text-sm text-gray-900 font-normal">
+                              <div className="text-sm text-gray-900 font-semibold">
                                 {review.userName}
                               </div>
                             </div>
                           </div>
-                          <p className="text-gray-600 text-sm mb-1 font-light">
+                          <p className="text-gray-800 text-sm mb-1 font-light">
                             {review.comment}
                           </p>
                         </div>
@@ -250,26 +248,32 @@ export default function VendorPage({
                     <tbody>
                       <tr>
                         <td className="py-2 align-top w-1/2">
-                          <h3 className="font-semibold text-gray-800  mb-1 border-b border-gray-200 pb-2">
+                          <h3 className="font-semibold text-gray-900  mb-1 border-b border-gray-200 pb-2">
                             Company name
                           </h3>
-                          <p className="text-gray-700 text-sm">{vendor.companyName}</p>
-                          <p className="text-sm text-gray-500 mt-1">
+                          <p className="text-gray-800 text-sm">
+                            {vendor.companyName}
+                          </p>
+                          <p className="text-sm text-gray-800 mt-1">
                             ({vendor.businessNumber})
                           </p>
                         </td>
                         <td className="py-2 align-top pl-4">
-                          <h3 className="font-semibold text-gray-800 mb-1 border-b border-gray-200 pb-2">
+                          <h3 className="font-semibold text-gray-900 mb-1 border-b border-gray-200 pb-2">
                             Service type
                           </h3>
-                          <p className="text-gray-700 text-sm">{vendor.category}</p>
+                          <p className="text-gray-800 text-sm">
+                            {vendor.category}
+                          </p>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
                 <div>
-                  <h3 className="font-bold  text-gray-800 border-b border-gray-200 pb-2">Store location</h3>
+                  <h3 className="font-bold  text-gray-800 border-b border-gray-200 pb-2">
+                    Store location
+                  </h3>
                   <p className="text-gray-700 text-sm">
                     {vendor.storeLocation}
                   </p>
@@ -277,32 +281,44 @@ export default function VendorPage({
                 </div>
 
                 {/* Map placeholder */}
-                <div className="h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-                  Map data @2024 Google
+                <div className="w-full h-[150px] sm:h-[200px] overflow-hidden rounded-lg shadow-lg">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.362974706922!2d3.3494461735047723!3d6.601734522252316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9230fc4fc853%3A0xd8babb191dac2f6b!2sAllen%20Ave%2C%20Allen%2C%20Ikeja%20101233%2C%20Lagos!5e0!3m2!1sen!2sng!4v1729671204756!5m2!1sen!2sng"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="w-full h-full"
+                  />
                 </div>
-
-                <div className="text-sm text-gray-500 space-y-1">
-                  <p>Terms of Use</p>
-                  <p>Report a map error</p>
-                </div>
-
-                <div className="flex items-center text-green-600">
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Verified vendor</span>
-                </div>
-                <p className="text-sm text-gray-500">
-                  This vendor was verified on 07/02/2022
-                </p>
+                {vendor.verified && (
+                  <div className="p-6 border border-gray-200 rounded-lg mt-4 shadow-sm">
+                    <div className="flex flex-row items-center gap-2">
+                      <div>
+                        <CheckCircle className="w-5 h-5 text-[#0e7b33]" />
+                      </div>
+                      <div>
+                        {" "}
+                        <div className="flex items-center gap-2">
+                          <span className="text-gray-800 font-bold">
+                            Verified vendor
+                          </span>
+                        </div>
+                        <p className="text-xs text-gray-500">
+                          This vendor was verified on{" "}
+                          {new Date(vendor.verifiedDate)
+                            .toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "2-digit",
+                            })
+                            .replace(/\//g, "/")}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
