@@ -2,15 +2,21 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronLeft, CheckCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ChevronLeft, AlertTriangle } from "lucide-react";
 import { getVendorById } from "@/lib/vendors";
 import { useState } from "react";
+import { VendorProfile } from "@/components/vendor/VendorProfile";
 
 export default function MakeOfferPage({
   params,
 }: {
   params: { vendorId: string };
 }) {
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
   // Sample events data
   const events = [
     {
@@ -46,6 +52,32 @@ export default function MakeOfferPage({
   if (!vendor) return notFound();
 
   const selectedEvent = events.find((event) => event.id === selectedEventId);
+ const handleSubmitOffer = async () => {
+   setIsSubmitting(true);
+   setError("");
+
+   try {
+     // Validate form inputs
+     if (!selectedEventId) {
+       throw new Error("Please select an event");
+     }
+     if (offerAmount <= 0) {
+       throw new Error("Please enter a valid offer amount");
+     }
+
+     // Simulate API call to submit offer
+     await new Promise((resolve) => setTimeout(resolve, 1000));
+
+     // Navigate to offer status page on success
+     router.push(`/vendors/view/${vendor.id}/offer-status`);
+   } catch (err) {
+     setError(
+       (err as Error).message || "Failed to submit offer. Please try again."
+     );
+   } finally {
+     setIsSubmitting(false);
+   }
+ };
 
   return (
     <div className="container mx-auto px-4 py-8 bg-white">
@@ -163,66 +195,30 @@ export default function MakeOfferPage({
                 rows={4}
               />
             </div>
-            <button className="w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group">
+            <button
+              onClick={handleSubmitOffer}
+              disabled={isSubmitting}
+              className={`w-full py-[7px] px-4 rounded-full text-center font-medium transition-all duration-300 relative overflow-hidden border border-[#6946e2] bg-white group ${
+                isSubmitting ? "opacity-75" : ""
+              }`}
+            >
               <span className="relative z-10 bg-clip-text text-sm font-semibold text-transparent bg-gradient-to-b from-[#6946e2] to-[#b868fa] group-hover:from-white group-hover:to-white/90">
-                Submit offer
+                {isSubmitting ? "Submitting..." : "Submit offer"}
               </span>
               <span className="absolute inset-0 bg-gradient-to-b from-[#b868fa] to-[#6946e2] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></span>
             </button>
+
+            {error && (
+              <div className="mt-4 text-red-600 text-sm flex items-center">
+                <AlertTriangle className="w-4 h-4 mr-2" />
+                {error}
+              </div>
+            )}
           </div>
         </div>
         {/* Right Column - Vendor Summary (1/3 width) */}
-        <div className="lg:col-span-1">
-          <div className="bg-white p-6">
-            <div className="flex items-center mb-4">
-              <div className="w-24 h-24 bg-gray-200 rounded-lg mr-4 overflow-hidden">
-                {vendor.images[0] && (
-                  <img
-                    src={vendor.images[0]}
-                    alt={vendor.name}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-              <div>
-                <h1 className="text-semibold text-xl text-gray-900 font-bold flex items-center gap-1">
-                  {vendor.name}
-                  {vendor.verified && (
-                    <span className="text-[#0e7b33]">
-                      <CheckCircle className="w-5 h-5" />
-                    </span>
-                  )}
-                </h1>
-                <h2 className="text-gray-700 font-semibold">
-                  ${vendor.pricePerDay} per day
-                </h2>
-                <div className="flex items-center">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <svg
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(vendor.rating)
-                            ? "text-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="ml-1 text-gray-900 font-semibold">
-                    {vendor.rating.toFixed(2)}
-                  </span>
-                  <span className="text-gray-500 ml-2 text-sm">
-                    ({vendor.reviewCount} reviews)
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div>
+          <VendorProfile vendor={vendor} />
         </div>
       </div>
     </div>
