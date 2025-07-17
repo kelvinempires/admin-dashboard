@@ -304,31 +304,11 @@ export default function BookingDetailsPage({
  const renderAddReview = () => (
    <div className="bg-white p-6">
      {/* Back button */}
-     <button
-       onClick={() => setStatus("pending")}
-       className="flex items-center text-gray-600 mb-6 hover:text-gray-800 text-sm"
-     >
-       <ChevronLeft className="w-5 h-5 mr-1" />
-       Back to booking
-     </button>
-
      <div className="max-w-2xl mx-auto">
        <div className="text-center mb-2">
-         {/* Vendor Image - assuming vendor.images[0] is an image URL */}
-         {vendor.images[0] ? (
-           <div className="mx-auto mb-4 w-20 h-20 rounded-full overflow-hidden border-2 border-[#6946e2]">
-             <img
-               src={vendor.images[0]}
-               alt={vendor.name}
-               className="w-full h-full object-cover"
-             />
-           </div>
-         ) : (
-           <div className="mx-auto  w-20 h-20 rounded-full bg-gradient-to-br from-[#6946e2] to-[#b868fa] flex items-center justify-center text-white text-3xl font-bold">
-             {vendor.name.charAt(0).toUpperCase()}
-           </div>
-         )}
-
+         <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-2">
+           {vendor.images[0]}
+         </div>
          <h2 className="font-semibold text-gray-700">
            How was the service from ?
          </h2>
@@ -383,6 +363,13 @@ export default function BookingDetailsPage({
          Submit Review
        </button>
      </div>
+     <button
+       onClick={() => setStatus("pending")}
+       className="flex items-center text-gray-600 mt-4 hover:text-gray-800 text-sm"
+     >
+       <ChevronLeft className="w-5 h-5 mr-1" />
+       Back to booking
+     </button>
    </div>
  );
   const renderContent = () => {
